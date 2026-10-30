@@ -1,0 +1,48 @@
+# Node / Vite build artifacts
+bloom-ui/node_modules/
+bloom-ui/dist/
+bloom-ui/dist-ssr/
+bloom-ui/.vite/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Scratch
+*.local
+*.tmp
+.cache/
+
+# Backup / archive
+vvv.zip
+*.zip
+*.rar
+*.7z
+
+# Reference material (large APK extraction, ~583MB) — kept in working tree,
+# excluded from git. Jangan ikut repo, cukup dibaca untuk audit CEF.
+megency-standalone/
+
+# Base gamemode — excluded dari U0 foundation commit untuk jaga repo size.
+# Akan di-review dan di-curate masuk ke `bloom-gamemode/` di Fase 1,
+# dengan filter: hanya .pwn + .inc + .cfg (tanpa .amx/.dll/.so binary).
+server/
+
+# Pawn compile artifacts (future, saat server/ masuk)
+*.amx
+
+# Secrets
+.env
+.env.local
+*.key
+*.pem

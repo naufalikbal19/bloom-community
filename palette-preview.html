@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bloom Community — Palette Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Poppins:wght@400;500;600;700&family=Nunito:wght@600;700&family=Caveat:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bloom-pink-300: #FFD9E8;
+    --bloom-pink-500: #FFB7D5;
+    --bloom-pink-700: #FF8FBC;
+    --bloom-rose-500: #F48FB1;
+    --bloom-lavender-500: #C8A8E9;
+    --bloom-sky-500: #A8D8F0;
+    --bloom-mint-500: #A8E6CF;
+    --bloom-butter-500: #FFE8A8;
+    --bloom-peach-500: #FFCBA4;
+    --bloom-coral-500: #FFA2A2;
+    --bloom-cream-50: #FFF9F5;
+    --bloom-cream-100: #FFF0E8;
+    --bloom-ink-500: #9B8DB0;
+    --bloom-ink-700: #6B5B7E;
+    --bloom-ink-900: #4A3B5C;
+    --bloom-gold-500: #F0C27B;
+    --bloom-glass: rgba(255,255,255,0.65);
+    --grad-bloom: linear-gradient(135deg, #FFB7D5 0%, #C8A8E9 100%);
+    --grad-dream: linear-gradient(180deg, #FFD9E8 0%, #FFF9F5 60%);
+    --grad-glass: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+    --shadow-pink: 0 8px 24px rgba(255,143,188,0.25);
+    --shadow-lav:  0 8px 24px rgba(200,168,233,0.3);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Poppins', system-ui, sans-serif;
+    color: var(--bloom-ink-900);
+    background: var(--bloom-cream-50);
+    line-height: 1.5;
+  }
+  body {
+    background:
+      radial-gradient(circle at 10% 20%, rgba(255,183,213,0.25) 0 300px, transparent 300px),
+      radial-gradient(circle at 90% 80%, rgba(200,168,233,0.25) 0 320px, transparent 320px),
+      var(--bloom-cream-50);
+    min-height: 100vh;
+  }
+  header {
+    padding: 48px 32px 24px;
+    text-align: center;
+  }
+  header h1 {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    margin: 0 0 8px;
+    background: var(--grad-bloom);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  header p {
+    color: var(--bloom-ink-700);
+    margin: 0;
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+  }
+  main { max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+  section { margin-top: 56px; }
+  section h2 {
+    font-family: 'Fredoka', system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    margin: 0 0 20px;
+    color: var(--bloom-ink-900);
+  }
+
+  /* Palette grid */
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 16px;
+  }
+  .swatch {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(255,143,188,0.12);
+    transition: transform .2s, box-shadow .2s;
+    background: #fff;
+  }
+  .swatch:hover { transform: translateY(-3px); box-shadow: var(--shadow-pink); }
+  .swatch .chip { height: 92px; }
+  .swatch .meta { padding: 12px 14px 14px; }
+  .swatch .token { font-weight: 600; font-size: 13px; color: var(--bloom-ink-900); }
+  .swatch .hex { font-size: 12px; color: var(--bloom-ink-500); font-family: 'Nunito', sans-serif; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .swatch .peran { font-size: 11px; color: var(--bloom-ink-700); margin-top: 6px; }
+
+  /* Gradients */
+  .gradients {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px;
+  }
+  .grad {
+    height: 140px; border-radius: 24px; padding: 20px;
+    display: flex; align-items: flex-end;
+    color: var(--bloom-ink-900);
+    font-weight: 600;
+    box-shadow: var(--shadow-pink);
+  }
+  .grad.g1 { background: var(--grad-bloom); color: #fff; text-shadow: 0 1px 2px rgba(74,59,92,.3); }
+  .grad.g2 { background: var(--grad-dream); }
+  .grad.g3 {
+    background:
+      var(--grad-glass),
+      linear-gradient(135deg, #FFB7D5, #C8A8E9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #fff;
+    text-shadow: 0 1px 2px rgba(74,59,92,.3);
+  }
+
+  /* Components demo */
+  .components {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(255,143,188,0.12);
+  }
+  .card h3 {
+    font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 18px;
+    margin: 0 0 16px;
+  }
+  /* Button */
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 24px; border-radius: 999px; border: 0;
+    font-family: inherit; font-weight: 600; font-size: 14px; cursor: pointer;
+    transition: transform .18s, box-shadow .18s;
+  }
+  .btn:hover { transform: scale(1.02); }
+  .btn:active { transform: scale(0.96); }
+  .btn-primary { background: var(--grad-bloom); color: #fff; box-shadow: var(--shadow-pink); }
+  .btn-secondary { background: var(--bloom-lavender-500); color: var(--bloom-ink-900); box-shadow: var(--shadow-lav); }
+  .btn-ghost { background: transparent; color: var(--bloom-ink-900); border: 2px solid var(--bloom-pink-500); }
+  .btn-danger { background: var(--bloom-coral-500); color: var(--bloom-ink-900); }
+  .btn-row { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* Input */
+  .input {
+    width: 100%;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 2px solid var(--bloom-pink-300);
+    background: var(--bloom-cream-50);
+    font-family: inherit; font-size: 14px;
+    color: var(--bloom-ink-900);
+    outline: none;
+    transition: border-color .18s, box-shadow .18s;
+  }
+  .input:focus { border-color: var(--bloom-pink-500); box-shadow: 0 0 0 4px rgba(255,183,213,0.3); }
+  .input::placeholder { color: var(--bloom-ink-500); }
+  .input-label { display: block; font-size: 12px; color: var(--bloom-ink-700); margin: 0 0 6px 10px; font-weight: 500; }
+
+  /* Badge / Chip */
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .b-pink { background: var(--bloom-pink-300); color: var(--bloom-pink-700); }
+  .b-mint { background: var(--bloom-mint-500); color: #2E6E4E; }
+  .b-butter { background: var(--bloom-butter-500); color: #7E5F10; }
+  .b-coral { background: var(--bloom-coral-500); color: #7E2525; }
+  .b-lav { background: var(--bloom-lavender-500); color: #3C2860; }
+  .b-sky { background: var(--bloom-sky-500); color: #1F4A66; }
+  .b-gold {
+    background: linear-gradient(135deg, #FFE8A8, #F0C27B);
+    color: #6B4F10; border: 1px solid #F0C27B;
+  }
+
+  /* Toast */
+  .toast {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 18px; border-radius: 18px;
+    background: var(--bloom-glass); backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.6);
+    box-shadow: var(--shadow-pink);
+  }
+  .toast + .toast { margin-top: 10px; }
+  .toast .icon {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center; flex-shrink: 0;
+    background: var(--grad-bloom); color: #fff; font-weight: 700;
+  }
+  .toast .title { font-weight: 600; font-size: 14px; margin: 0 0 2px; }
+  .toast .body { font-size: 12px; color: var(--bloom-ink-700); margin: 0; }
+
+  /* Chat bubbles */
+  .chat { display: flex; flex-direction: column; gap: 8px; }
+  .bubble { padding: 10px 14px; border-radius: 18px; font-size: 13px; max-width: 80%; }
+  .b-me   { background: var(--bloom-pink-300); color: var(--bloom-ink-900); border-bottom-left-radius: 4px; }
+  .b-do   { background: var(--bloom-butter-500); color: var(--bloom-ink-900); border-bottom-left-radius: 4px; font-style: italic; }
+  .b-ooc  { background: var(--bloom-sky-500); color: var(--bloom-ink-900); border-bottom-left-radius: 4px; }
+  .b-self { background: var(--grad-bloom); color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .bubble .meta { font-size: 10px; font-weight: 600; opacity: 0.7; margin-bottom: 2px; }
+
+  /* Card showcase */
+  .showcase {
+    position: relative; overflow: hidden;
+    background: var(--grad-dream);
+    border: 1px solid rgba(255,143,188,0.2);
+  }
+  .showcase .deco {
+    position: absolute; width: 120px; height: 120px; right: -30px; top: -30px;
+    border-radius: 50%; background: var(--grad-bloom); opacity: 0.3;
+    filter: blur(20px);
+  }
+  .showcase h4 { font-family: 'Fredoka', sans-serif; margin: 0 0 8px; font-size: 20px; }
+  .showcase p { margin: 0 0 14px; color: var(--bloom-ink-700); font-size: 14px; }
+
+  footer {
+    text-align: center; margin-top: 60px; padding: 24px;
+    font-size: 12px; color: var(--bloom-ink-500);
+    font-family: 'Caveat', cursive; font-size: 18px;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Bloom Palette v2</h1>
+    <p>Where every story blooms. · 16 token · 3 gradient · 6 komponen demo</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>🎨 Color Tokens</h2>
+      <div class="palette">
+        <!-- 16 tokens -->
+        <div class="swatch"><div class="chip" style="background:#FFD9E8"></div><div class="meta"><div class="token">--bloom-pink-300</div><div class="hex">#FFD9E8</div><div class="peran">BG CTA soft, chip</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFB7D5"></div><div class="meta"><div class="token">--bloom-pink-500</div><div class="hex">#FFB7D5</div><div class="peran">Primary brand, CTA</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FF8FBC"></div><div class="meta"><div class="token">--bloom-pink-700</div><div class="hex">#FF8FBC</div><div class="peran">Hover, pressed</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#F48FB1"></div><div class="meta"><div class="token">--bloom-rose-500</div><div class="hex">#F48FB1</div><div class="peran">Aksen hangat, hadiah</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#C8A8E9"></div><div class="meta"><div class="token">--bloom-lavender-500</div><div class="hex">#C8A8E9</div><div class="peran">Secondary, badge VIP</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#A8D8F0"></div><div class="meta"><div class="token">--bloom-sky-500</div><div class="hex">#A8D8F0</div><div class="peran">Info, link, chat system</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#A8E6CF"></div><div class="meta"><div class="token">--bloom-mint-500</div><div class="hex">#A8E6CF</div><div class="peran">Success, income, buff</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFE8A8"></div><div class="meta"><div class="token">--bloom-butter-500</div><div class="hex">#FFE8A8</div><div class="peran">Warning, star, event</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFCBA4"></div><div class="meta"><div class="token">--bloom-peach-500</div><div class="hex">#FFCBA4</div><div class="peran">Secondary card</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFA2A2"></div><div class="meta"><div class="token">--bloom-coral-500</div><div class="hex">#FFA2A2</div><div class="peran">Danger, HP low, delete</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFF9F5; box-shadow:inset 0 0 0 1px #FFD9E8"></div><div class="meta"><div class="token">--bloom-cream-50</div><div class="hex">#FFF9F5</div><div class="peran">Background utama</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFF0E8"></div><div class="meta"><div class="token">--bloom-cream-100</div><div class="hex">#FFF0E8</div><div class="peran">Panel sekunder</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#9B8DB0"></div><div class="meta"><div class="token">--bloom-ink-500</div><div class="hex">#9B8DB0</div><div class="peran">Teks disabled, placeholder</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#6B5B7E"></div><div class="meta"><div class="token">--bloom-ink-700</div><div class="hex">#6B5B7E</div><div class="peran">Teks sekunder</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#4A3B5C"></div><div class="meta"><div class="token">--bloom-ink-900</div><div class="hex">#4A3B5C</div><div class="peran">Teks utama (bukan hitam!)</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#F0C27B"></div><div class="meta"><div class="token">--bloom-gold-500</div><div class="hex">#F0C27B</div><div class="peran">Premium, VIP, achievement</div></div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🌈 Gradients</h2>
+      <div class="gradients">
+        <div class="grad g1">--grad-bloom (hero, splash)</div>
+        <div class="grad g2">--grad-dream (card hadiah)</div>
+        <div class="grad g3">--grad-glass (overlay panel)</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>🧩 Komponen Demo</h2>
+      <div class="components">
+        <!-- Button card -->
+        <div class="card">
+          <h3>Button</h3>
+          <div class="btn-row">
+            <button class="btn btn-primary">Mainkan ✨</button>
+            <button class="btn btn-secondary">Pengaturan</button>
+          </div>
+          <div class="btn-row" style="margin-top:10px">
+            <button class="btn btn-ghost">Kembali</button>
+            <button class="btn btn-danger">Hapus</button>
+          </div>
+        </div>
+
+        <!-- Input card -->
+        <div class="card">
+          <h3>Input</h3>
+          <label class="input-label" for="u">Username</label>
+          <input id="u" class="input" placeholder="misal: naufal_bloom" />
+          <label class="input-label" style="margin-top:12px" for="p">Password</label>
+          <input id="p" class="input" type="password" placeholder="••••••••" />
+        </div>
+
+        <!-- Badge card -->
+        <div class="card">
+          <h3>Badge / Chip</h3>
+          <div class="badges">
+            <span class="badge b-pink">Baru</span>
+            <span class="badge b-mint">Online</span>
+            <span class="badge b-butter">★ 4.8</span>
+            <span class="badge b-coral">HP Rendah</span>
+            <span class="badge b-lav">VIP</span>
+            <span class="badge b-sky">Info</span>
+            <span class="badge b-gold">👑 Gold</span>
+          </div>
+        </div>
+
+        <!-- Toast card -->
+        <div class="card">
+          <h3>Toast</h3>
+          <div class="toast">
+            <div class="icon">✓</div>
+            <div>
+              <p class="title">Login Berhasil</p>
+              <p class="body">Selamat datang kembali, Luna!</p>
+            </div>
+          </div>
+          <div class="toast">
+            <div class="icon" style="background: var(--bloom-butter-500); color: #7E5F10">!</div>
+            <div>
+              <p class="title">Hunger Rendah</p>
+              <p class="body">Beli makanan di toko terdekat.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat bubbles card -->
+        <div class="card">
+          <h3>Chat RP (/me /do /ooc)</h3>
+          <div class="chat">
+            <div class="bubble b-me"><div class="meta">/me · Luna</div>mengambil kelopak dari rambutnya</div>
+            <div class="bubble b-do"><div class="meta">/do · Luna</div>Terlihat tersenyum lembut</div>
+            <div class="bubble b-ooc"><div class="meta">(( OOC · Naufal))</div>halo semua, baru join nih</div>
+            <div class="bubble b-self"><div class="meta">IC · Kamu</div>Hai Luna, selamat datang di Bloom!</div>
+          </div>
+        </div>
+
+        <!-- Reward card -->
+        <div class="card showcase">
+          <div class="deco"></div>
+          <h4>🎁 Hadiah Harian Hari 3</h4>
+          <p>Login hari ketiga berturut-turut! Klaim hadiah spesialmu.</p>
+          <button class="btn btn-primary">Klaim ✨</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Palette locked · UI CEF Plan v1.2 §1.2 · Bloom Community · 2026-10-31</footer>
+</body>
+</html>

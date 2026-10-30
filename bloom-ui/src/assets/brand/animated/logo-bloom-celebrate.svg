@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bloom celebrate — 1200ms reward burst.
+     - Logo scale 0→1.3→1 overshoot (600ms)
+     - 12 particles burst radial (butter/pink/coral, 800ms)
+     - Each petal bloom individually with rotate ±15° (overshoot)
+     - Center gold flash flare brightness 1→2→1 (300ms)
+     - CREATIVE: confetti kelopak falling + ring pulse expand -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-label="Bloom celebrate">
+  <defs>
+    <radialGradient id="petG-c" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#FFE6EF"/>
+      <stop offset="48%" stop-color="#FFB7D5"/>
+      <stop offset="100%" stop-color="#FF8FBC"/>
+    </radialGradient>
+    <radialGradient id="ctrG-c" cx="38%" cy="30%" r="72%">
+      <stop offset="0%" stop-color="#FFF4D4"/>
+      <stop offset="55%" stop-color="#F0C27B"/>
+      <stop offset="100%" stop-color="#D9A862"/>
+    </radialGradient>
+    <filter id="flare" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+    </filter>
+    <g id="petal-c">
+      <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+            fill="url(#petG-c)" stroke="#FF8FBC" stroke-width="0.6"/>
+    </g>
+  </defs>
+
+  <!-- Expanding ring pulse (CREATIVE) -->
+  <circle cx="160" cy="160" r="20" fill="none" stroke="#FFB7D5" stroke-width="3" opacity="0">
+    <animate attributeName="r" from="20" to="130" begin="0s" dur="0.9s" fill="freeze"/>
+    <animate attributeName="opacity" values="0; 0.9; 0" keyTimes="0; 0.2; 1" begin="0s" dur="0.9s" fill="freeze"/>
+    <animate attributeName="stroke-width" from="4" to="0.5" begin="0s" dur="0.9s" fill="freeze"/>
+  </circle>
+  <circle cx="160" cy="160" r="20" fill="none" stroke="#C8A8E9" stroke-width="2" opacity="0">
+    <animate attributeName="r" from="20" to="150" begin="0.15s" dur="0.9s" fill="freeze"/>
+    <animate attributeName="opacity" values="0; 0.7; 0" keyTimes="0; 0.2; 1" begin="0.15s" dur="0.9s" fill="freeze"/>
+    <animate attributeName="stroke-width" from="3" to="0.3" begin="0.15s" dur="0.9s" fill="freeze"/>
+  </circle>
+
+  <!-- Flare behind -->
+  <circle cx="160" cy="160" r="38" fill="#FFF4D4" opacity="0" filter="url(#flare)">
+    <animate attributeName="opacity" values="0; 0.9; 0.4; 0" keyTimes="0; 0.15; 0.4; 1" begin="0s" dur="0.9s" fill="freeze"/>
+  </circle>
+
+  <!-- Flower with overshoot -->
+  <g transform="translate(160 160)">
+    <animateTransform attributeName="transform" type="scale" values="0; 1.3; 0.95; 1" keyTimes="0; 0.5; 0.75; 1" begin="0s" dur="0.6s" fill="freeze" additive="sum"/>
+    <animateTransform attributeName="transform" type="rotate" from="-15" to="0" begin="0s" dur="0.6s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1" additive="sum"/>
+
+    <g transform="scale(1.6)">
+      <!-- Each petal rotates ±15° overshoot -->
+      <g>
+        <use href="#petal-c" transform="rotate(0)"/>
+        <animateTransform attributeName="transform" type="rotate" values="-15; 0" begin="0.2s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+      </g>
+      <g>
+        <use href="#petal-c" transform="rotate(72)"/>
+        <animateTransform attributeName="transform" type="rotate" values="12; 0" begin="0.25s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+      </g>
+      <g>
+        <use href="#petal-c" transform="rotate(144)"/>
+        <animateTransform attributeName="transform" type="rotate" values="-10; 0" begin="0.3s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+      </g>
+      <g>
+        <use href="#petal-c" transform="rotate(216)"/>
+        <animateTransform attributeName="transform" type="rotate" values="15; 0" begin="0.35s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+      </g>
+      <g>
+        <use href="#petal-c" transform="rotate(288)"/>
+        <animateTransform attributeName="transform" type="rotate" values="-12; 0" begin="0.4s" dur="0.5s" fill="freeze" calcMode="spline" keySplines="0.34 1.56 0.64 1"/>
+      </g>
+
+      <!-- Center with flash flare -->
+      <circle cx="0" cy="0" r="12" fill="url(#ctrG-c)">
+        <animate attributeName="opacity" values="1; 1" dur="0.6s"/>
+      </circle>
+      <circle cx="0" cy="0" r="14" fill="#FFF9F5" opacity="0">
+        <animate attributeName="opacity" values="0; 0.9; 0" keyTimes="0; 0.3; 1" begin="0.2s" dur="0.3s" fill="freeze"/>
+        <animate attributeName="r" values="12; 18; 12" begin="0.2s" dur="0.3s" fill="freeze"/>
+      </circle>
+      <circle cx="-3.5" cy="-4" r="4" fill="#FFF9F5" opacity="0.75"/>
+    </g>
+  </g>
+
+  <!-- 12 radial particles -->
+  <g>
+    <!-- butter -->
+    <circle cx="160" cy="160" r="3" fill="#FFE8A8">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="80 -46" begin="0.2s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.2s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFE8A8">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="92 0" begin="0.22s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.22s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFE8A8">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="80 46" begin="0.24s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.24s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFE8A8">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="46 80" begin="0.26s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.26s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <!-- pink -->
+    <circle cx="160" cy="160" r="3" fill="#FFB7D5">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="0 92" begin="0.28s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.28s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFB7D5">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-46 80" begin="0.3s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.3s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFB7D5">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-80 46" begin="0.32s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.32s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFB7D5">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-92 0" begin="0.34s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.34s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <!-- coral -->
+    <circle cx="160" cy="160" r="3" fill="#FFA2A2">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-80 -46" begin="0.36s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.36s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFA2A2">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-46 -80" begin="0.38s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.38s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFA2A2">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="0 -92" begin="0.4s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.4s" dur="0.8s" fill="freeze"/>
+    </circle>
+    <circle cx="160" cy="160" r="3" fill="#FFA2A2">
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="46 -80" begin="0.42s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1"/>
+      <animate attributeName="opacity" values="0; 1; 0" keyTimes="0; 0.1; 1" begin="0.42s" dur="0.8s" fill="freeze"/>
+    </circle>
+  </g>
+
+  <!-- Falling confetti petals (CREATIVE flair) -->
+  <g>
+    <path d="M 0 0 C -4 -2 -8 -8 -4 -14 C 0 -18 4 -16 6 -10 C 8 -4 4 2 0 0 Z" fill="#FFD9E8">
+      <animateTransform attributeName="transform" type="translate" from="80 20" to="60 300" begin="0.3s" dur="0.9s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="420" begin="0.3s" dur="0.9s" fill="freeze" additive="sum"/>
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.3;1" begin="0.3s" dur="0.9s" fill="freeze"/>
+    </path>
+    <path d="M 0 0 C -4 -2 -8 -8 -4 -14 C 0 -18 4 -16 6 -10 C 8 -4 4 2 0 0 Z" fill="#C8A8E9">
+      <animateTransform attributeName="transform" type="translate" from="240 20" to="260 300" begin="0.35s" dur="0.9s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-380" begin="0.35s" dur="0.9s" fill="freeze" additive="sum"/>
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.3;1" begin="0.35s" dur="0.9s" fill="freeze"/>
+    </path>
+    <path d="M 0 0 C -4 -2 -8 -8 -4 -14 C 0 -18 4 -16 6 -10 C 8 -4 4 2 0 0 Z" fill="#FFE8A8">
+      <animateTransform attributeName="transform" type="translate" from="110 10" to="90 300" begin="0.4s" dur="0.9s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="300" begin="0.4s" dur="0.9s" fill="freeze" additive="sum"/>
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.3;1" begin="0.4s" dur="0.9s" fill="freeze"/>
+    </path>
+    <path d="M 0 0 C -4 -2 -8 -8 -4 -14 C 0 -18 4 -16 6 -10 C 8 -4 4 2 0 0 Z" fill="#A8E6CF">
+      <animateTransform attributeName="transform" type="translate" from="210 10" to="230 300" begin="0.45s" dur="0.9s" fill="freeze"/>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="-340" begin="0.45s" dur="0.9s" fill="freeze" additive="sum"/>
+      <animate attributeName="opacity" values="0;0.9;0" keyTimes="0;0.3;1" begin="0.45s" dur="0.9s" fill="freeze"/>
+    </path>
+  </g>
+</svg>

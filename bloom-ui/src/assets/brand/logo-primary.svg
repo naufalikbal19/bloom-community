@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bloom Community – Primary Logo (horizontal wordmark + flower, Fredoka) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 140" role="img" aria-label="Bloom">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&amp;display=swap');
+      .wordmark { font-family: 'Fredoka', system-ui, -apple-system, sans-serif; font-weight: 700; font-size: 92px; letter-spacing: -0.02em; }
+    </style>
+    <radialGradient id="petalGrad-p" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#FFE6EF"/>
+      <stop offset="48%" stop-color="#FFB7D5"/>
+      <stop offset="100%" stop-color="#FF8FBC"/>
+    </radialGradient>
+    <radialGradient id="centerGrad-p" cx="38%" cy="32%" r="72%">
+      <stop offset="0%" stop-color="#FFF4D4"/>
+      <stop offset="55%" stop-color="#F0C27B"/>
+      <stop offset="100%" stop-color="#D9A862"/>
+    </radialGradient>
+    <linearGradient id="textGrad-p" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6B5B7E"/>
+      <stop offset="100%" stop-color="#4A3B5C"/>
+    </linearGradient>
+    <filter id="softShadow-p" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5"/>
+      <feOffset dx="0" dy="2" result="offBlur"/>
+      <feFlood flood-color="#FF8FBC" flood-opacity="0.35"/>
+      <feComposite in2="offBlur" operator="in"/>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Wordmark: b l [flower-O] o m -->
+  <!-- "bl" -->
+  <text x="18" y="100" class="wordmark" fill="url(#textGrad-p)">bl</text>
+  <!-- flower replaces first 'o' -->
+  <g transform="translate(146 68)" filter="url(#softShadow-p)">
+    <g>
+      <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+            fill="url(#petalGrad-p)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(0)"/>
+      <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+            fill="url(#petalGrad-p)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(72)"/>
+      <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+            fill="url(#petalGrad-p)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(144)"/>
+      <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+            fill="url(#petalGrad-p)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(216)"/>
+      <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+            fill="url(#petalGrad-p)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(288)"/>
+    </g>
+    <circle cx="0" cy="0" r="12" fill="url(#centerGrad-p)"/>
+    <circle cx="-3.5" cy="-4" r="4" fill="#FFF9F5" opacity="0.7"/>
+    <!-- tiny stamen dots -->
+    <circle cx="4" cy="-1" r="1.2" fill="#D9A862"/>
+    <circle cx="-1" cy="4" r="1.2" fill="#D9A862"/>
+  </g>
+  <!-- "om" -->
+  <text x="200" y="100" class="wordmark" fill="url(#textGrad-p)">om</text>
+
+  <!-- subtle sparkle accents -->
+  <g fill="#FFE8A8" opacity="0.9">
+    <path d="M 388 32 l 2 -8 l 2 8 l 8 2 l -8 2 l -2 8 l -2 -8 l -8 -2 Z"/>
+    <path d="M 362 112 l 1.5 -5 l 1.5 5 l 5 1.5 l -5 1.5 l -1.5 5 l -1.5 -5 l -5 -1.5 Z"/>
+  </g>
+</svg>

@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bloom tirai (curtain transition) — 1500ms.
+     - 0-700ms: 2 velvet pink curtains slide IN from left+right to meet center (close)
+     - 700-900ms: hold center closed
+     - 900-1500ms: curtains slide OUT revealing stacked bloom logo
+     - CREATIVE: curtain fringe/tassel + spotlight sweep + sparkle on open -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Bloom curtain transition">
+  <defs>
+    <linearGradient id="curtainGrad-L" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9F6684"/>
+      <stop offset="40%" stop-color="#C47A9A"/>
+      <stop offset="100%" stop-color="#FF8FBC"/>
+    </linearGradient>
+    <linearGradient id="curtainGrad-R" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%" stop-color="#9F6684"/>
+      <stop offset="40%" stop-color="#C47A9A"/>
+      <stop offset="100%" stop-color="#FF8FBC"/>
+    </linearGradient>
+    <linearGradient id="spotlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF4D4" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#FFF4D4" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="petG-t" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#FFE6EF"/>
+      <stop offset="48%" stop-color="#FFB7D5"/>
+      <stop offset="100%" stop-color="#FF8FBC"/>
+    </radialGradient>
+    <radialGradient id="ctrG-t" cx="38%" cy="30%" r="72%">
+      <stop offset="0%" stop-color="#FFF4D4"/>
+      <stop offset="55%" stop-color="#F0C27B"/>
+      <stop offset="100%" stop-color="#D9A862"/>
+    </radialGradient>
+    <!-- Repeating fold pattern for curtain -->
+    <pattern id="curtainFolds" x="0" y="0" width="20" height="100" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="20" height="100" fill="none"/>
+      <path d="M 10 0 L 10 100" stroke="#8B577A" stroke-width="1" opacity="0.3"/>
+      <path d="M 6 0 L 6 100" stroke="#FFFFFF" stroke-width="0.5" opacity="0.2"/>
+    </pattern>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&amp;display=swap');
+      .wm-t { font-family: 'Fredoka', system-ui, sans-serif; font-weight: 700; font-size: 56px; letter-spacing: -0.02em; }
+    </style>
+  </defs>
+
+  <!-- Stage backdrop -->
+  <rect x="0" y="0" width="400" height="300" fill="#FFF9F5"/>
+
+  <!-- Spotlight (shows when curtains open) -->
+  <ellipse cx="200" cy="150" rx="130" ry="100" fill="url(#spotlight)" opacity="0">
+    <animate attributeName="opacity" values="0; 0; 0.9; 0.7" keyTimes="0; 0.5; 0.75; 1" dur="1.5s" fill="freeze"/>
+  </ellipse>
+
+  <!-- Stacked logo (behind curtains, revealed at the end) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0; 0; 1" keyTimes="0; 0.55; 0.8" dur="1.5s" fill="freeze"/>
+    <animateTransform attributeName="transform" type="translate" values="0 10; 0 10; 0 0" keyTimes="0; 0.55; 0.9" dur="1.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1; 0.34 1.56 0.64 1"/>
+
+    <!-- Flower -->
+    <g transform="translate(200 120) scale(1.0)">
+      <g>
+        <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+              fill="url(#petG-t)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(0)"/>
+        <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+              fill="url(#petG-t)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(72)"/>
+        <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+              fill="url(#petG-t)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(144)"/>
+        <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+              fill="url(#petG-t)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(216)"/>
+        <path d="M 0 0 C -11 -3 -21 -24 -9 -38 C -4 -43 0 -43 0 -43 C 0 -43 4 -43 9 -38 C 21 -24 11 -3 0 0 Z"
+              fill="url(#petG-t)" stroke="#FF8FBC" stroke-width="0.6" transform="rotate(288)"/>
+      </g>
+      <circle cx="0" cy="0" r="12" fill="url(#ctrG-t)"/>
+      <circle cx="-3.5" cy="-4" r="4" fill="#FFF9F5" opacity="0.75"/>
+    </g>
+    <text x="200" y="210" text-anchor="middle" class="wm-t" fill="#4A3B5C">bloom</text>
+  </g>
+
+  <!-- Left curtain -->
+  <g>
+    <!-- Starts off-screen left, slides to center 0-700ms, holds 700-900ms, slides out 900-1500ms -->
+    <animateTransform attributeName="transform" type="translate" values="-220 0; 0 0; 0 0; -220 0" keyTimes="0; 0.47; 0.6; 1" dur="1.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    <!-- Main cloth -->
+    <path d="M 0 0 L 200 0 L 196 300 L 0 300 Z" fill="url(#curtainGrad-L)"/>
+    <!-- Folds overlay -->
+    <path d="M 0 0 L 200 0 L 196 300 L 0 300 Z" fill="url(#curtainFolds)" opacity="0.6"/>
+    <!-- Edge rope -->
+    <path d="M 200 0 L 196 300" stroke="#F0C27B" stroke-width="2" opacity="0.9"/>
+    <!-- Tassels at bottom edge -->
+    <g fill="#F0C27B" transform="translate(190 300)">
+      <circle cx="0" cy="0" r="4"/>
+      <circle cx="-10" cy="0" r="3"/>
+      <circle cx="-20" cy="0" r="3"/>
+      <circle cx="-30" cy="0" r="2.5"/>
+    </g>
+  </g>
+
+  <!-- Right curtain -->
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="220 0; 0 0; 0 0; 220 0" keyTimes="0; 0.47; 0.6; 1" dur="1.5s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1; 0 0 1 1; 0.4 0 0.2 1"/>
+    <path d="M 200 0 L 400 0 L 400 300 L 204 300 Z" fill="url(#curtainGrad-R)"/>
+    <path d="M 200 0 L 400 0 L 400 300 L 204 300 Z" fill="url(#curtainFolds)" opacity="0.6"/>
+    <path d="M 200 0 L 204 300" stroke="#F0C27B" stroke-width="2" opacity="0.9"/>
+    <g fill="#F0C27B" transform="translate(210 300)">
+      <circle cx="0" cy="0" r="4"/>
+      <circle cx="10" cy="0" r="3"/>
+      <circle cx="20" cy="0" r="3"/>
+      <circle cx="30" cy="0" r="2.5"/>
+    </g>
+  </g>
+
+  <!-- Top valance (decorative band) -->
+  <path d="M 0 0 L 400 0 L 400 24 Q 350 44 300 24 Q 250 44 200 24 Q 150 44 100 24 Q 50 44 0 24 Z" fill="#9F6684"/>
+  <path d="M 0 0 L 400 0 L 400 24 Q 350 44 300 24 Q 250 44 200 24 Q 150 44 100 24 Q 50 44 0 24 Z" fill="url(#curtainFolds)" opacity="0.5"/>
+  <circle cx="300" cy="34" r="4" fill="#F0C27B"/>
+  <circle cx="200" cy="34" r="4" fill="#F0C27B"/>
+  <circle cx="100" cy="34" r="4" fill="#F0C27B"/>
+
+  <!-- Reveal sparkles when curtains open (CREATIVE) -->
+  <g opacity="0">
+    <animate attributeName="opacity" values="0;0;1;0" keyTimes="0;0.65;0.8;1" dur="1.5s" fill="freeze"/>
+    <path d="M 120 90 l 1.5 -6 l 1.5 6 l 6 1.5 l -6 1.5 l -1.5 6 l -1.5 -6 l -6 -1.5 Z" fill="#FFE8A8"/>
+    <path d="M 280 100 l 1.5 -6 l 1.5 6 l 6 1.5 l -6 1.5 l -1.5 6 l -1.5 -6 l -6 -1.5 Z" fill="#FFE8A8"/>
+    <path d="M 100 200 l 1.2 -5 l 1.2 5 l 5 1.2 l -5 1.2 l -1.2 5 l -1.2 -5 l -5 -1.2 Z" fill="#FFE8A8"/>
+    <path d="M 300 210 l 1.2 -5 l 1.2 5 l 5 1.2 l -5 1.2 l -1.2 5 l -1.2 -5 l -5 -1.2 Z" fill="#FFE8A8"/>
+  </g>
+</svg>

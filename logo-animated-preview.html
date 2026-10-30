@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Bloom — Logo Animated Preview (5 varian)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Baloo+2:wght@600;800&family=Poppins:wght@400;500;600&family=Caveat:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream-50:#FFF9F5; --cream-100:#FFF0E8; --ink-900:#4A3B5C; --ink-700:#6B5B7E; --ink-500:#9B8DB0;
+    --pink-300:#FFD9E8; --pink-500:#FFB7D5; --pink-700:#FF8FBC; --lavender-500:#C8A8E9;
+    --gold-500:#F0C27B; --butter-500:#FFE8A8;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; font-family: 'Poppins', system-ui, sans-serif; color: var(--ink-900); background: var(--cream-50); }
+  body {
+    background:
+      radial-gradient(circle at 15% 10%, rgba(255,183,213,.25) 0 320px, transparent 320px),
+      radial-gradient(circle at 85% 90%, rgba(200,168,233,.25) 0 340px, transparent 340px),
+      var(--cream-50);
+    min-height: 100vh;
+    padding: 48px 24px 80px;
+  }
+  header { text-align: center; margin-bottom: 40px; }
+  header h1 {
+    font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 44px; margin: 0 0 6px;
+    background: linear-gradient(135deg, var(--pink-500), var(--lavender-500));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  header p { color: var(--ink-700); margin: 0; font-family: 'Caveat', cursive; font-size: 20px; }
+
+  main { max-width: 1200px; margin: 0 auto; }
+
+  .controls {
+    display: flex; justify-content: center; gap: 10px; margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .ctrl {
+    padding: 10px 20px; border-radius: 999px; border: 2px solid var(--pink-300);
+    background: #fff; color: var(--ink-900); font-weight: 600; cursor: pointer;
+    font-family: inherit; font-size: 13px; transition: all .18s;
+  }
+  .ctrl:hover { transform: translateY(-2px); border-color: var(--pink-500); box-shadow: 0 4px 14px rgba(255,143,188,.2); }
+  .ctrl.active { background: linear-gradient(135deg, var(--pink-500), var(--lavender-500)); color: #fff; border-color: transparent; box-shadow: 0 6px 18px rgba(255,143,188,.35); }
+
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;
+  }
+
+  .card {
+    background: #fff; border-radius: 24px; padding: 20px; text-align: center;
+    box-shadow: 0 6px 20px rgba(255,143,188,.12); transition: transform .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(255,143,188,.2); }
+  .card h2 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: 20px; margin: 0 0 4px; color: var(--ink-900); }
+  .card .meta { font-size: 11px; color: var(--ink-500); margin-bottom: 14px; }
+  .viewer {
+    aspect-ratio: 1 / 1; display: grid; place-items: center;
+    background: linear-gradient(180deg, var(--cream-100), var(--cream-50));
+    border-radius: 20px; margin-bottom: 14px; overflow: hidden; position: relative;
+  }
+  .viewer.wide { aspect-ratio: 4 / 2; }
+  .viewer object { width: 90%; height: 90%; }
+  .replay {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 16px; border-radius: 999px; border: 2px solid var(--pink-300);
+    background: #fff; color: var(--ink-900); font-weight: 600; cursor: pointer;
+    font-family: inherit; font-size: 12px; transition: all .18s;
+  }
+  .replay:hover { background: var(--pink-300); border-color: var(--pink-500); }
+
+  .notes {
+    margin-top: 60px; padding: 24px; background: #fff; border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(255,143,188,.12);
+  }
+  .notes h3 { font-family: 'Fredoka', sans-serif; margin: 0 0 12px; }
+  .notes ul { margin: 0; padding-left: 20px; color: var(--ink-700); font-size: 14px; line-height: 1.7; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .viewer object { animation: none; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1>Logo Animated — 5 Varian</h1>
+    <p>Bloom Community · UI CEF Plan §1.1.1 · Pure SVG + SMIL</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <button class="ctrl active" onclick="replay('all')">Replay All</button>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Intro</h2>
+        <div class="meta">1800ms · once · Splash screen, startup</div>
+        <div class="viewer wide">
+          <object id="o-intro" type="image/svg+xml" data="bloom-ui/src/assets/brand/animated/logo-bloom-intro.svg"></object>
+        </div>
+        <button class="replay" onclick="replay('intro')">↻ Replay</button>
+      </div>
+
+      <div class="card">
+        <h2>Loading</h2>
+        <div class="meta">2400ms · infinite · Transisi antar scene</div>
+        <div class="viewer">
+          <object id="o-loading" type="image/svg+xml" data="bloom-ui/src/assets/brand/animated/logo-bloom-loading.svg"></object>
+        </div>
+        <button class="replay" onclick="replay('loading')">↻ Reload</button>
+      </div>
+
+      <div class="card">
+        <h2>Idle</h2>
+        <div class="meta">4000ms · infinite · Watermark subtle pojok UI</div>
+        <div class="viewer" style="background:#4A3B5C">
+          <object id="o-idle" type="image/svg+xml" data="bloom-ui/src/assets/brand/animated/logo-bloom-idle.svg"></object>
+        </div>
+        <button class="replay" onclick="replay('idle')">↻ Reload</button>
+      </div>
+
+      <div class="card">
+        <h2>Celebrate</h2>
+        <div class="meta">1200ms · once · Event claim, achievement</div>
+        <div class="viewer">
+          <object id="o-celebrate" type="image/svg+xml" data="bloom-ui/src/assets/brand/animated/logo-bloom-celebrate.svg"></object>
+        </div>
+        <button class="replay" onclick="replay('celebrate')">↻ Replay</button>
+      </div>
+
+      <div class="card">
+        <h2>Tirai (Curtain)</h2>
+        <div class="meta">1500ms · once · Transisi panggung masuk/keluar</div>
+        <div class="viewer wide">
+          <object id="o-tirai" type="image/svg+xml" data="bloom-ui/src/assets/brand/animated/logo-bloom-tirai.svg"></object>
+        </div>
+        <button class="replay" onclick="replay('tirai')">↻ Replay</button>
+      </div>
+    </div>
+
+    <div class="notes">
+      <h3>Spec highlight (dari UI Plan §1.1.1):</h3>
+      <ul>
+        <li><b>Pure SVG + CSS/SMIL</b> dipilih sebagai MVP (zero runtime cost, scalable, Chromium WebView friendly). Lottie dibuka kalau butuh di Fase U6 polish.</li>
+        <li><b>Target performance:</b> 60fps di 1366×768 dan 2400×1080 landscape. Semua animasi pakai <code>transform</code> + <code>opacity</code> only (nggak layout trigger).</li>
+        <li><b>Reduced-motion mode:</b> <code>logo-bloom-loading</code> jadi <code>logo-bloom-idle</code> (lebih pelan). Diterapkan via media query & settings toggle di Fase U3.</li>
+        <li><b>Total animated logo files:</b> target &lt;80KB gzipped (semua 5 varian).</li>
+        <li><b>Creative extras</b> yang ditambah (CREATIVE MANDATE): falling cherry petals di intro, bokeh drift di loading, breathing aura di idle, 2-wave ring pulse + confetti petal di celebrate, spotlight sweep + tassel ornament di tirai.</li>
+      </ul>
+    </div>
+  </main>
+
+  <script>
+    function replay(which) {
+      const ids = which === 'all'
+        ? ['o-intro','o-loading','o-idle','o-celebrate','o-tirai']
+        : ['o-' + which];
+      ids.forEach(id => {
+        const o = document.getElementById(id);
+        if (!o) return;
+        const src = o.data;
+        o.data = '';
+        setTimeout(() => { o.data = src; }, 30);
+      });
+      document.querySelectorAll('.ctrl').forEach(b => b.classList.toggle('active', b.textContent.toLowerCase().includes(which)));
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/*
+ * Bloom Community — Global reset + base.
+ * Depends on tokens.css loaded first.
+ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+html {
+  /* font-size di-set oleh tokens.css var(--ui-scale) */
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bloom-ink-900);
+  background: var(--bloom-cream-50);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* No tap zoom on PC WebView */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+img, svg, video, object {
+  display: block;
+  max-width: 100%;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-weight: 600;
+  color: var(--bloom-ink-900);
+  line-height: 1.2;
+}
+
+/* Default link */
+a {
+  color: var(--bloom-pink-700);
+  text-decoration: none;
+}
+a:hover { color: var(--bloom-rose-500); }
+
+/* Scrollbar — soft pastel */
+::-webkit-scrollbar { width: 0.5rem; height: 0.5rem; }
+::-webkit-scrollbar-track { background: var(--bloom-cream-100); }
+::-webkit-scrollbar-thumb {
+  background: var(--bloom-pink-500);
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--bloom-pink-700); }
+
+/* Selection */
+::selection { background: var(--bloom-pink-300); color: var(--bloom-ink-900); }

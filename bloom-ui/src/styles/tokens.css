@@ -1,0 +1,104 @@
+/*
+ * Bloom Community — Design Tokens v2 (16 colors + gradients + motion + spacing)
+ * Source of truth: UI CEF Plan §1.2, §1.5, §2.3.
+ * Generated-equivalent output. Nanti akan dipipeline dari Figma Tokens Studio (ADR-003).
+ * Dilarang edit token di sini manual tanpa update plan + revisions-log.md.
+ */
+
+:root {
+  /* ========== Color — Pink primary ========== */
+  --bloom-pink-300: #FFD9E8;
+  --bloom-pink-500: #FFB7D5;
+  --bloom-pink-700: #FF8FBC;
+
+  /* ========== Color — Accents ========== */
+  --bloom-rose-500:     #F48FB1;
+  --bloom-lavender-500: #C8A8E9;
+  --bloom-sky-500:      #A8D8F0;
+  --bloom-mint-500:     #A8E6CF;
+  --bloom-butter-500:   #FFE8A8;
+  --bloom-peach-500:    #FFCBA4;
+  --bloom-coral-500:    #FFA2A2;
+
+  /* ========== Color — Neutrals ========== */
+  --bloom-cream-50:  #FFF9F5;
+  --bloom-cream-100: #FFF0E8;
+
+  /* ========== Color — Ink (text) — never pure #000 ========== */
+  --bloom-ink-500: #9B8DB0;
+  --bloom-ink-700: #6B5B7E;
+  --bloom-ink-900: #4A3B5C;
+
+  /* ========== Color — Premium ========== */
+  --bloom-gold-500: #F0C27B;
+  --bloom-glass:    rgba(255, 255, 255, 0.65);
+
+  /* ========== Gradients ========== */
+  --grad-bloom: linear-gradient(135deg, #FFB7D5 0%, #C8A8E9 100%);
+  --grad-dream: linear-gradient(180deg, #FFD9E8 0%, #FFF9F5 60%);
+  --grad-glass: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2));
+
+  /* ========== Shadows — brand-tinted, never black ========== */
+  --shadow-sm:   0 2px 6px   rgba(255, 143, 188, 0.15);
+  --shadow-md:   0 8px 24px  rgba(255, 143, 188, 0.25);
+  --shadow-lg:   0 16px 40px rgba(255, 143, 188, 0.3);
+  --shadow-glow-pink:     0 0 24px rgba(255, 143, 188, 0.5);
+  --shadow-glow-lavender: 0 0 24px rgba(200, 168, 233, 0.5);
+
+  /* ========== Spacing (base 4px) ========== */
+  --space-0:  0;
+  --space-1:  0.25rem;  /* 4px */
+  --space-2:  0.5rem;   /* 8px */
+  --space-3:  0.75rem;  /* 12px */
+  --space-4:  1rem;     /* 16px */
+  --space-6:  1.5rem;   /* 24px */
+  --space-8:  2rem;     /* 32px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  --space-24: 6rem;     /* 96px */
+
+  /* ========== Radius ========== */
+  --radius-sm:   0.5rem;    /*  8px */
+  --radius-md:   1rem;      /* 16px */
+  --radius-lg:   1.5rem;    /* 24px */
+  --radius-xl:   2rem;      /* 32px */
+  --radius-pill: 999px;
+
+  /* ========== Motion ========== */
+  --dur-fast:   200ms;
+  --dur-medium: 320ms;
+  --dur-slow:   500ms;
+  --ease-bouncy: cubic-bezier(0.34, 1.56, 0.64, 1);  /* in — overshoot */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);       /* out — standard */
+
+  /* ========== Z-index scale ========== */
+  --z-base:          0;
+  --z-sticky:        10;
+  --z-dropdown:      20;
+  --z-sticky-header: 30;
+  --z-drawer:        40;
+  --z-modal:         50;
+  --z-toast:         60;
+  --z-tooltip:       70;
+  --z-debug:         100;
+
+  /* ========== UI scale (ADR-002) ==========
+   * Computed at runtime in main.ts: min(innerWidth/1366, innerHeight/768).
+   * Default 1 before JS runs. */
+  --ui-scale: 1;
+}
+
+/* Scale rem automatically via html font-size (ADR-002). */
+html {
+  font-size: calc(16px * var(--ui-scale));
+}
+
+/* Reduced motion fallback (RULE AKTIF reduced-motion toggle) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
