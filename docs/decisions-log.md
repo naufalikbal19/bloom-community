@@ -95,6 +95,28 @@ Android WebView di Android 8+ (SDK 26+) adalah **Chrome WebView yang di-update v
 
 ---
 
+## ADR-005 [2026-10-31] Font display: **Fredoka** (owner-approved)
+
+**Context:** UI Plan §1.1 memilih dua kandidat untuk wordmark "bloom" dan font display (hero, splash, judul besar): **Fredoka** vs **Baloo 2**. Dua varian logo primary dihasilkan di Fase U0 Brand Foundation (`logo-primary.svg` Fredoka vs `logo-primary-baloo.svg` Baloo 2) untuk perbandingan visual.
+
+**Options considered:**
+- **Fredoka** (700): rounded, chubby, lebih kawaii-soft, letterform lebih bulat merata, aksen letter 'o' tengah pas untuk integrasi bunga.
+- **Baloo 2** (800): sedikit lebih tegas / punchy, kontras stroke lebih besar, feel playful tapi less "soft diary magical".
+
+**Decision:** **Fredoka 600/700** sebagai font display tunggal.
+
+**Consequences:**
+- `logo-primary.svg`, `logo-stacked.svg`, `logo-icon.svg` jadi final (semua pakai Fredoka).
+- `logo-primary-baloo.svg` di-arsipkan sebagai referensi perbandingan — tidak dihapus (bisa jadi acuan "kenapa Fredoka dipilih" di dokumentasi brand nanti), tapi tidak di-import ke komponen produksi.
+- Font Baloo 2 **tidak di-bundle** di `bloom-ui/src/assets/fonts/`.
+- Font Fredoka weight 600 + 700 sudah ter-download sebagai `.woff2` subset Latin (29.7KB per weight, variable font).
+- CSS token `.wm` dan heading selectors di `global.css` menggunakan `font-family: 'Fredoka', system-ui, sans-serif` secara eksplisit.
+- Brand guidelines §4 Tipografi di-update: hapus "Baloo 2" dari kolom kandidat, lock Fredoka.
+
+**Status:** ✅ Accepted (owner-approved, 2026-10-31).
+
+---
+
 ## ADR-003 [2026-10-31] Figma + HTML prototype paralel sebagai workflow desain
 
 **Context:** Perlu memilih antara Figma-first (desain full dulu, baru code), Code-first (prototype langsung, Figma menyusul), atau paralel. Owner solo + butuh iterasi cepat tapi tetap punya sumber kebenaran visual yang bisa di-review.

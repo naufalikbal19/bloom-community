@@ -21,7 +21,7 @@ Wordmark **"bloom"** lowercase + ikon bunga cherry blossom 5-kelopak menggantika
 
 Varian animasi in-game (SVG + SMIL): `logo-bloom-intro` (splash 1800ms), `logo-bloom-loading` (loop 2400ms), `logo-bloom-idle` (watermark 4000ms), `logo-bloom-celebrate` (reward 1200ms), `logo-bloom-tirai` (curtain 1500ms).
 
-**Font kandidat display:** Fredoka 700 (default) atau Baloo 2 800 (pembanding) — owner pilih setelah review preview. Logo monochrome pakai `--bloom-ink-900`.
+**Font display:** **Fredoka 600/700** (locked oleh owner 2026-10-31, ADR-005). Logo monochrome pakai `--bloom-ink-900`.
 
 ## 3. Palette (16 token)
 
@@ -43,7 +43,7 @@ Lengkap di UI Plan §1.2. Ringkas:
 
 | Role | Font | Weight | Ukuran dasar |
 |---|---|---|---|
-| Display (hero, splash) | Fredoka | 600, 700 | 32–64px |
+| Display (hero, splash) — **LOCKED** | Fredoka | 600, 700 | 32–64px |
 | Heading (judul panel) | Poppins | 600 | 20–28px |
 | Body (teks umum, dialog) | Poppins | 400, 500 | 14–16px |
 | UI label (button, badge) | Poppins | 500, 600 | 12–14px |

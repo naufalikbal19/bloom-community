@@ -9,7 +9,7 @@
 **Changelog v1.2:** Tambah Bagian 12 (Memory Log System) — mekanisme wajib bagi Claude Code untuk mencatat & membaca ulang kesalahan/revisi supaya tidak terulang.
 
 **Keputusan tambahan yang di-approve bersamaan dengan dokumen ini:**
-- ✅ Font display: dua kandidat **Fredoka** vs **Baloo 2** akan di-preview sebagai wordmark di Fase U0, owner pilih setelah lihat.
+- ✅ Font display: **Fredoka** (locked oleh owner 2026-10-31 setelah review preview di Fase U0 — ADR-005).
 - ✅ Fase U0 pertama kali kerjakan: inspect `megency-standalone/lib/` (versi Chromium CEF), lalu generate 3 draft SVG logo + palette preview HTML.
 - ✅ Struktur 8 fase U0–U7 locked.
 - ✅ Framework Svelte 4 + Vite (tentatif, akan dikonfirmasi oleh hasil inspect CEF di Fase U0 hari 1).
@@ -720,7 +720,7 @@ bloom-community/
 - **Sedang dikerjakan:** —
 - **Keputusan teknis locked:** Svelte 4 + Vite + TypeScript (ADR-001). Base design 1366×768 + rem scaling via `--ui-scale` (ADR-002). Figma + HTML paralel (ADR-003). CEF = Android WebView wrapper (ADR-004). Palet 16 token (plan §1.2). SMIL animasi SVG untuk logo.
 - **Masalah terbuka:** 
-  - Owner belum pilih antara Fredoka vs Baloo 2 (sementara default Fredoka).
+  - ✅ Font display LOCKED **Fredoka** (ADR-005, approved 2026-10-31).
   - Database schema audit (`database.sql`) belum dilakukan — perlu untuk Fase 1 refactor accounts/characters jadi 3-slot.
   - CEF bridge event mapping (reverse engineer dari `megency-standalone/smali/.../cef/bridge/`) belum didokumentasikan — perlu Fase U5.
   - PC version client belum di-inspect — ditunda.
